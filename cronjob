@@ -1,13 +1,5 @@
-# Run from 18:30 to 19:00 on Monday, Tuesday and Thursday
-30-59 18 * * 1,2,4 /path/to/script
-# Run from 19:00 to 20:00 on Monday, Tuesday and Thursday
-0-59 19 * * 1,2,4 /path/to/script
-# Run from 20:00 to 20:30 on Monday, Tuesday and Thursday
-0-30 20 * * 1,2,4 /path/to/script
 # Run from 21:00 to 22:00 on Monday, Tuesday, Thursday and Friday
-0-59 21-22 * * 1,2,4,5 /path/to/script
-# Run from 23:00 to 00:00 on Monday, Tuesday, Thursday and Friday
-0-59 23 * * 1,2,4,5 /path/to/script
+0-59 18-23 * * 1,2,3,4,5 target/release/gisem_rust
 
 
 
