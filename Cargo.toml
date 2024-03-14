@@ -1,0 +1,10 @@
+[package]
+name = "gisem_rust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+fantoccini = { version = "0.19.3", features = ["rustls-tls"] }
+serde = "1.0.197"
+serde_json = "1.0.114"
+tokio = { version = "1.36.0", features = ["full"] }
