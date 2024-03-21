@@ -1,11 +1,7 @@
 #!/bin/bash
+geckodriver &
+GECKO_PID=$!
 
-sleep=5 # minutes
+./target/release/gisem_rust $1 $2
 
-while true; do 
-    echo "Running script"
-    ./target/release/gisem_rust
-
-    echo "Sleeping for $sleep minutes"
-    sleep $((60*$sleep))
-done
+kill $GECKO_PID
