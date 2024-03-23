@@ -16,9 +16,7 @@ async fn main() -> Result<(), fantoccini::error::CmdError> {
         log!("Login as {} performed successfully!", config.username);
     }
 
-    let res = main_loop(client, &config).await;
-    log!("");
-    res
+    main_loop(client, &config).await
 }
 
 fn get_args() -> (u32, u32) {
