@@ -1,4 +1,3 @@
 #!/bin/bash
-cron
-exec "$@"
-tail -f /dev/null  # Keep the script running
+service cron start
+tail -f /dev/null

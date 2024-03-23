@@ -1,7 +1,10 @@
 #!/bin/bash
-geckodriver &
+geckodriver_path=$(whereis geckodriver | cut -d ' ' -f 2)
+$geckodriver_path &
+
 GECKO_PID=$!
 
-./target/release/gisem_rust $1 $2
+cd /usr/src/app
+./target/release/gisem_presencas $1 $2
 
 kill $GECKO_PID

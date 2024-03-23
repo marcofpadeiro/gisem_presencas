@@ -1,4 +1,4 @@
-use gisem_rust::{log, login, main_loop, setup_client, Config};
+use gisem_presencas::{log, login, main_loop, setup_client, Config};
 
 const PORT: u16 = 4444;
 
@@ -26,7 +26,7 @@ fn get_args() -> (u32, u32) {
     args.next();
 
     if args.len() != 2 {
-        eprintln!("Usage: gisem_rust <duration> <rate>");
+        eprintln!("Usage: gisem_presencas <duration> <rate>");
         eprintln!("\tduration - minutes");
         eprintln!("\trate - seconds");
         std::process::exit(1);

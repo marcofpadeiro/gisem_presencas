@@ -18,16 +18,18 @@ RUN GECKODRIVER_VERSION=`wget -qO- "https://api.github.com/repos/mozilla/geckodr
     && tar -zxf /tmp/geckodriver.tar.gz -C /usr/local/bin \
     && rm /tmp/geckodriver.tar.gz
 
-WORKDIR /usr/src/myapp
+WORKDIR /usr/src/app
 COPY . .
 
-RUN chmod +x /usr/src/myapp/runner.sh
-RUN chmod +x /usr/src/myapp/entrypoint.sh
+RUN chmod +x /usr/src/app/runner.sh
+RUN chmod +x /usr/src/app/entrypoint.sh
 
 RUN cargo build --release
 
-RUN (crontab -l ; echo "30 18 * * 1,2,4  /usr/src/myapp/runner.sh 120 300") | crontab
-RUN (crontab -l ; echo "0 21 * * 1,2,5  /usr/src/myapp/runner.sh 180 300") | crontab
-RUN (crontab -l ; echo "0 21 * * 4  /usr/src/myapp/runner.sh 180 30") | crontab
+# min hour day month day_of_week command
+RUN echo "30 18 * * 1,2,4 /usr/src/app/runner.sh 120 300" >> mycron \
+    && echo "0 21 * * 1,2,5 /usr/src/app/runner.sh 180 300" >> mycron \
+    && echo "0 21 * * 4 /usr/src/app/runner.sh 180 30" >> mycron \
+    && crontab mycron && rm mycron
 
 ENTRYPOINT ["./entrypoint.sh"]
